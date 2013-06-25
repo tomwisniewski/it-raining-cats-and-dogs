@@ -11,6 +11,7 @@ GEM
       faraday_middleware (~> 0.8)
       hashie (>= 0.4.0)
       multi_json (~> 1.0, >= 1.0.3)
+    json (1.7.7)
     minitest (5.0.5)
     multi_json (1.7.7)
     multipart-post (1.2.0)
@@ -34,6 +35,7 @@ PLATFORMS
 
 DEPENDENCIES
   instagram
+  json
   minitest
   rack-test
   shotgun
