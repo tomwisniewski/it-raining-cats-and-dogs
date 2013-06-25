@@ -1,0 +1,23 @@
+body {
+  font-family: 'Lato', serif;
+  text-align: center;
+  color: black;
+  font-size: x-large;
+  text-align: center;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+}
+
+a {
+  text-decoration:none;
+  color: #08c
+}
