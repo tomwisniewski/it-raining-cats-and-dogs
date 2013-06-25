@@ -13,10 +13,12 @@ class CatsAndDogs < Sinatra::Base
 
   get '/' do
     "Hello world"
-    dog_photos = Instagram.tag_recent_media('dog')
-    dog_photos.each do |photo|
-      puts photo.images.standard_resolution.url
+    dog_photos = Instagram.tag_recent_media('catanddogs')
+    # raise dog_photos.length
+    @dog_images = dog_photos.map do |photo|
+      photo.images.standard_resolution.url
     end
+    erb :home
   end
 
 # puts Instagram.tag('cat')
