@@ -1,0 +1,43 @@
+body {
+  font-family: 'Lato', serif;
+  color: black;
+  font-size: x-large;
+}
+
+.wrapper {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: xx-large;
+}
+ 
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+}
+
+a {
+  text-decoration:none;
+  color: #08c
+}
+
+img {
+  width: 350px;
+  height: 350px;
+}
+
+.drop{
+  position: absolute;
+  left: 0px;
+  top: 10px-1px;
+  width: 10px;
+  height: 10px;
+  background: #79dbfc;
+  border-radius: 0px 5px 5px 5px;
+  transform: rotate(45deg);
+}
