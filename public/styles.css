@@ -1,4 +1,5 @@
 body {
+  /*background: linear-gradient(180deg, rgb(65, 199, 217) 0%, rgb(38, 163, 191) 69%);*/
   font-family: 'Lato', serif;
   text-align: center;
   color: black;
@@ -7,7 +8,7 @@ body {
 }
 
 h1 {
-  font-size: xx-large;
+  font-size: 100px;
 }
 
 button {
@@ -18,6 +19,16 @@ button {
 }
 
 a {
+/*  font-size: 80px;*/
   text-decoration:none;
   color: #08c
 }
+
+.photos {
+  border-radius: 300px
+}
+
+/*.weather {
+    width: 0px;
+    height: 0px;
+}*/
