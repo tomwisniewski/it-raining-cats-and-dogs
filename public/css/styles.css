@@ -6,6 +6,7 @@ body {
 
 .wrapper {
   width: 800px;
+/*  padding-left: 45px;*/
   margin: 0 auto;
   text-align: center;
 }

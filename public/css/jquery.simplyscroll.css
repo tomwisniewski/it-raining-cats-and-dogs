@@ -86,26 +86,6 @@ Note all DIVs are generated and should not be hard-coded
 	border-radius: 10% 100% 100% 100%;
 }
 	
-.simply-scroll .simply-scroll-btn {}
-
-.simply-scroll .simply-scroll-btn-left {}
-.simply-scroll .simply-scroll-btn-left.disabled {}
-.simply-scroll .simply-scroll-btn-left:hover {}
-
-.simply-scroll .simply-scroll-btn-right {}
-.simply-scroll .simply-scroll-btn-right.disabled {}
-.simply-scroll .simply-scroll-btn-right:hover {}
-
-.simply-scroll .simply-scroll-btn-up {}
-.simply-scroll .simply-scroll-btn-up.disabled {}
-.simply-scroll .simply-scroll-btn-up:hover {}
-
-.simply-scroll .simply-scroll-btn-down {}
-.simply-scroll .simply-scroll-btn-down.disabled {}
-.simply-scroll .simply-scroll-btn-down:hover {}
-	
-
-
 /* Vertical scroller example */
 
 .vert { /* wider than clip to position buttons to side */
