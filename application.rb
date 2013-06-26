@@ -1,7 +1,7 @@
 require 'sinatra/base'
-require 'sinatra/flash'
 require 'instagram'
 require 'mongoid'
+require './lib/users'
 
 Mongoid.load!("./mongoid.yml")
 
@@ -14,7 +14,7 @@ end
 class CatsAndDogs < Sinatra::Base
 
   helpers do
-    # ENV["MONGO_ENV"] = "development"
+    ENV["MONGO_ENV"] = "development"
     def get_photo(tag)
       photos = Instagram.tag_recent_media(tag)
       photos.map do |photo|
@@ -24,7 +24,14 @@ class CatsAndDogs < Sinatra::Base
   end
 
   post '/signup' do
+    User.create({:name => params[:firstname]})
+    erb :signup
+  end
 
+  get '/signup' do
+    user = User.find(:name => params[:name])
+    user.email
+    erb :signup
   end
 
   get '/' do
