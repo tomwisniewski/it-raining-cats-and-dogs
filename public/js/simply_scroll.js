@@ -1,7 +1,7 @@
 (function($) {
   $(function() { //on DOM ready 
         $("#scroller").simplyScroll({
-            orientation: 'vertical'  
+            orientation: 'vertical',
           });
   });
  })(jQuery);
