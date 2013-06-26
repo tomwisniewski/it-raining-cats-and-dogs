@@ -1,0 +1,14 @@
+development:
+  sessions:
+    default:
+      database: catsanddogs_dev
+      hosts:
+        - localhost:27017
+
+
+test:
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: catsanddogs_test
