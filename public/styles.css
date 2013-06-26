@@ -3,7 +3,6 @@ body {
   font-family: 'Lato', serif;
   text-align: center;
   color: black;
-  font-size: x-large;
   text-align: center;
 }
 
@@ -11,15 +10,14 @@ h1 {
   font-size: 100px;
 }
 
-button {
+/*button {
   padding: 10px;
   border: none;
   border-radius: 10px;
   background: none;
-}
+}*/
 
 a {
-/*  font-size: 80px;*/
   text-decoration:none;
   color: #08c
 }
@@ -27,8 +25,3 @@ a {
 .photos {
   border-radius: 300px
 }
-
-/*.weather {
-    width: 0px;
-    height: 0px;
-}*/
