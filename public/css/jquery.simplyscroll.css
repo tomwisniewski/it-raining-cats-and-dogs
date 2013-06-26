@@ -1,0 +1,113 @@
+/*
+ * simplyScroll 2 - a scroll-tastic jQuery plugin
+ *
+ * http://logicbox.net/jquery/simplyscroll
+ *
+ * Copyright (c) 2009-2012 Will Kelly - http://logicbox.net
+ *
+ * Dual licensed under the MIT and GPL licenses.
+ *
+ * Last revised: 31/01/2012
+ *
+ */
+
+/* Default/Master classes 
+
+Example markup format (for horizontal scroller)
+Note all DIVs are generated and should not be hard-coded
+
+<div class="your-custom-class simply-scroll-container">
+	<div class="simply-scroll-btn simply-scroll-btn-left"></div>
+	<div class="simply-scroll-btn simply-scroll-btn-right"></div>
+	<div class="simply-scroll-clip">
+		<ul class="simply-scroll-list">
+			<li>...</li>
+			...
+		</ul>
+	</div>
+</div>
+
+
+*/
+
+.simply-scroll-container { /* Container DIV - automatically generated */
+	position: relative;
+}
+
+.simply-scroll-clip { /* Clip DIV - automatically generated */
+	position: relative;
+	overflow: hidden;
+}
+
+.simply-scroll-list { /* UL/OL/DIV - the element that simplyScroll is inited on */
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	
+.simply-scroll-list li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.simply-scroll-list li img {
+	border: none;
+	display: block;
+}
+	
+/* Custom class modifications - override classees
+
+.simply-scroll is default
+
+*/
+
+.simply-scroll { /* Customisable base class for style override DIV */
+	/*width: 600px;*/
+	height: 800px;
+	margin-bottom: 1em;
+}
+
+.simply-scroll .simply-scroll-clip {
+	width: 400x;
+	height: 700px;
+}
+	
+.simply-scroll .simply-scroll-list {}
+
+.simply-scroll .simply-scroll-list li {
+	float: left;
+	width: 400px;
+	height: 400px;
+}
+
+.simply-scroll .simply-scroll-list li img {
+	border-radius: 10% 100% 100% 100%;
+}
+	
+/* Vertical scroller example */
+
+.vert { /* wider than clip to position buttons to side */
+	width: 340px;
+	height: 400px;
+	margin-bottom: 1.5em;
+}
+
+.vert .simply-scroll-clip {
+	width: 290px;
+	height: 400px;
+}
+
+.vert .simply-scroll-list {}
+
+.vert .simply-scroll-list li {
+	width: 290px;
+	height: 200px;
+}
+.vert .simply-scroll-list li img {}
+
+
+
+/* NOTE left-right classes wouldn't be needed on vertical scroller */
+

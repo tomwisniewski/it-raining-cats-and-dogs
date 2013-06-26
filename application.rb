@@ -16,8 +16,7 @@ class CatsAndDogs < Sinatra::Base
   helpers do
     # ENV["MONGO_ENV"] = "development"
     def get_photo(tag)
-          # raise dog_photos.length
-    photos = Instagram.tag_recent_media(tag)
+      photos = Instagram.tag_recent_media(tag)
       photos.map do |photo|
         photo.images.standard_resolution.url
       end
