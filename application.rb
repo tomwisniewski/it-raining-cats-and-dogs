@@ -29,6 +29,11 @@ class CatsAndDogs < Sinatra::Base
         photo.images.standard_resolution.url
       end
     end
+
+    def signed_in?
+      @user != nil
+    end
+
   end
 
   before do
@@ -67,6 +72,15 @@ class CatsAndDogs < Sinatra::Base
     @photos = get_photo('petcats')
     @title = "Cats"
     erb :display
+  end
+
+  post '/login' do
+
+  end
+
+  post '/logout' do
+    session[:current_user]=nil
+    redirect to ('/')
   end
 
 end

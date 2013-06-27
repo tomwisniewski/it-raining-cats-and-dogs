@@ -48,7 +48,7 @@ img {
   z-index: 10000000;
 }
 
-label.fixed_width {
+.fixed_width {
   display: block;
   width: 190px;
   float: left;
@@ -71,4 +71,14 @@ label.fixed_width {
 
 form {
   padding-left: 200px;
+}
+
+.loginform {
+  display: block;
+  width: 130px;
+  float: left;
+}
+
+p {
+  margin-right:80px;
 }
