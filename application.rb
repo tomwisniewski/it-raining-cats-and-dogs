@@ -69,4 +69,13 @@ class CatsAndDogs < Sinatra::Base
     erb :display
   end
 
+  post '/login' do
+
+  end
+
+  post '/logout' do
+    session[:current_user]=nil
+    redirect to ('/')
+  end
+
 end

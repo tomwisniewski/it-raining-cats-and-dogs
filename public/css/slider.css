@@ -1,0 +1,37 @@
+.panel {
+	background: #80E6FF;
+    background-size:90% 90%;
+    height:210px;
+	display:none;
+    font-family: 'Lato', serif;
+}
+.panel p{
+    display: block;
+    width: 190px;
+    float: left;
+}
+.slide {
+	margin:0;
+	padding:0;
+    border-top:solid 0px #08c;
+}
+.pull-me {
+	display:block;
+    position:relative;
+    left:650px;
+    width:150px;
+    height:20px;
+	font-family: 'Lato', serif;
+    font-size:14px;
+	color:#ffffff;
+    background:#08c;
+	text-decoration:none;
+ /  -moz-border-bottom-left-radius:5px;
+    -moz-border-bottom-right-radius:5px; 
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    text-align:center;
+}
+.pull-me p {
+    text-align:center;
+}
