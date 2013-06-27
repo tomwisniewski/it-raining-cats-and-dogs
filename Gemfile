@@ -6,6 +6,10 @@ gem 'mongo'
 gem 'mongoid'
 
 group :development do
+  gem 'capybara'
+  gem 'rspec'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
   gem 'shotgun'
   gem 'minitest'
   gem 'rack-test'

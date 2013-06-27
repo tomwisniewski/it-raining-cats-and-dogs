@@ -1,5 +1,4 @@
 require 'sinatra/base'
-# require 'sinatra/flash'
 require 'instagram'
 require 'mongoid'
 require_relative './lib/users'
@@ -23,7 +22,7 @@ class CatsAndDogs < Sinatra::Base
   end
 
   helpers do
-    # ENV["MONGO_ENV"] = "development"
+    ENV["MONGO_ENV"] = "development"
     def get_photo(tag)
       photos = Instagram.tag_recent_media(tag)
       photos.map do |photo|
@@ -60,11 +59,13 @@ class CatsAndDogs < Sinatra::Base
     
   get '/dogs' do
     @photos = get_photo('petdogs')
+    @title = "Dogs"
     erb :display
   end
 
   get '/cats' do
     @photos = get_photo('petcats')
+    @title = "Cats"
     erb :display
   end
 
