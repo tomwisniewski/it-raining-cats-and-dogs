@@ -29,6 +29,11 @@ class CatsAndDogs < Sinatra::Base
         photo.images.standard_resolution.url
       end
     end
+
+    def signed_in?
+      @user != nil
+    end
+
   end
 
 

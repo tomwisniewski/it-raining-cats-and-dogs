@@ -1,6 +1,9 @@
-
 <div class='weather'>
   <image src='image/rain.svg'>
 </div>
 
 <h1> It's raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+
+<% if signed_in? %>
+  <%= erb :home_page_search %>
+<% end %>
