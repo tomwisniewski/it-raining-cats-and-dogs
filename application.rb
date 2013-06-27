@@ -30,11 +30,6 @@ class CatsAndDogs < Sinatra::Base
       end
     end
 
-    # def get_weather
-    #   response = Weather.lookup(44418)
-    #   response.condition.text
-    # end
-
     def signed_in?
       @user != nil
     end
@@ -45,7 +40,7 @@ class CatsAndDogs < Sinatra::Base
   end
 
   get '/' do
-      @weather = Weather.lookup(44418)
+    @weather = Weather.lookup(44418)
     erb :home
   end
 
