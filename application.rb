@@ -1,15 +1,15 @@
 require 'sinatra/base'
 require 'instagram'
 require 'mongoid'
+require 'weather-api'
 require_relative './lib/users'
 
 Mongoid.load!("./mongoid.yml")
 
 Instagram.configure do |config|
   config.client_id = ENV['INSTAGRAM_ID']
-  config.client_secret = ENV['INSTAGRAM_SECRET']
+  # config.client_secret = ENV['INSTAGRAM_SECRET']
 end
-
 
 class CatsAndDogs < Sinatra::Base
 
@@ -30,10 +30,14 @@ class CatsAndDogs < Sinatra::Base
       end
     end
 
+    # def get_weather
+    #   response = Weather.lookup(44418)
+    #   response.condition.text
+    # end
+
     def signed_in?
       @user != nil
     end
-
   end
 
   before do
@@ -41,6 +45,7 @@ class CatsAndDogs < Sinatra::Base
   end
 
   get '/' do
+      @weather = Weather.lookup(44418)
     erb :home
   end
 
