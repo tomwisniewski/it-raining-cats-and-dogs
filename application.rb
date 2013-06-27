@@ -31,7 +31,6 @@ class CatsAndDogs < Sinatra::Base
     end
   end
 
-
   before do
     @user = session[:current_user]
   end
