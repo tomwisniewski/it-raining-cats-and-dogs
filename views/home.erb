@@ -1,35 +1,35 @@
 <div class="panel">
-  <br />
-  <br />
-	  <p><form class="login_form" action="/login" method="POST">
-		  <div>
-		    <label class="loginform" for="email">Email</label>
-		    <input type="text" name="email" id="email" />
-		  </div> 
-		  <div> 
-		    <label class="loginform" for="password">Password</label>  
-		    <input type="text" name="password" id="password" />
-		  </div>
-		  <div class="submit">  
-	    	<input class="submit_button" type="submit" value="Login" />
-	  	</div>   
-	  	<a href="/signup">Don't have a login? Click here to sign up.</a> 
-		</form>
-		</p>
+	<form class="login_form" action="/login" method="POST">
+	  <div>
+	    <label class="loginform" for="email">Email</label>
+	    <input type="text" name="email" id="email" />
+	  </div>
+	  <div>
+	    <label class="loginform" for="password">Password</label>
+	    <input type="text" name="password" id="password" />
+	  </div>
+	  <div class="submit">
+    	<input class="submit_button" type="submit" value="Login" />
+  	</div>
+  	<a href="/signup">Don't have a login? Click here to sign up.</a>
+	</form>
 </div>
-	 <p class="slide"><a href="#" class="pull-me">Login</a></p>
+
+<div class="slide"><a href="#" class="pull-me">Login</a></div>
+
+<form class="login_form" action="/logout" method="POST">
+  <div class="submit">
+  	<input class='logout_button' type="submit" value="Logout" />
+	</div>
+</form>
+
 <div class='weather'>
   <image src='image/rain.svg'>
 </div>
 
 <h1> It's raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
 
-		<form class="login_form" action="/logout" method="POST">
-		  <div class="submit">  
-	    	<input class='logout_button' type="submit" value="Logout" />
-	  	</div>   
-	  	<a href="/signup">Don't have a login? Click here to sign up.</a> 
-		</form>
+
 
 <% if signed_in? %>
   <%= erb :home_page_search %>
