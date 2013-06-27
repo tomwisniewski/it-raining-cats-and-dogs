@@ -1,4 +1,14 @@
 <form action = '/signup' method='post'>
-  <input type = 'text' name = 'firstname'>
-  <input type = 'submit' >
+  <input type = 'text' name = 'firstname' placeholder = 'firstname'>
+  <input type = 'text' name = 'surname'placeholder = 'surname'>
+   <input type = 'text' name = 'email' placeholder = 'email'>
+
+  <input type = 'submit'>
 </form>
+
+
+<div class = 'users'>
+  <% @users.each do |user| %>
+    <%= user %>
+  <% end %>
+</div>

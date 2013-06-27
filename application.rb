@@ -24,13 +24,17 @@ class CatsAndDogs < Sinatra::Base
   end
 
   post '/signup' do
-    User.create({:name => params[:firstname]})
-    erb :signup
+    User.create({
+      :firstname => params[:firstname],
+      :surname => params[:surname],
+      :email => params[:email],
+      })
+    # erb :signup
+    redirect to("/signup")
   end
 
   get '/signup' do
-    user = User.find(:name => params[:name])
-    user.email
+    @users = User.distinct(:firstname)
     erb :signup
   end
 
