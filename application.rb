@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'instagram'
 require 'mongoid'
-require './lib/users'
+require_relative './lib/users'
 
 Mongoid.load!("./mongoid.yml")
 
@@ -13,6 +13,14 @@ end
 
 class CatsAndDogs < Sinatra::Base
 
+  configure do
+    use(Rack::Session::Cookie,
+      :key => 'rack.session',
+      :path => '/',
+      :expire_after => 2592000, # In seconds
+      :secret => 'I am the secret code to encrypt the cookie')
+  end
+
   helpers do
     ENV["MONGO_ENV"] = "development"
     def get_photo(tag)
@@ -23,23 +31,31 @@ class CatsAndDogs < Sinatra::Base
     end
   end
 
-  post '/signup' do
-    User.create({
-      :firstname => params[:firstname],
-      :surname => params[:surname],
-      :email => params[:email],
-      })
-    # erb :signup
-    redirect to("/signup")
-  end
 
-  get '/signup' do
-    @users = User.distinct(:firstname)
-    erb :signup
+  before do
+    @user = session[:current_user]
   end
 
   get '/' do
     erb :home
+  end
+
+  get '/signup' do
+    erb :signup
+  end
+
+  post '/signup' do
+    User.create({ :first_name => params[:first_name],
+                  :last_name => params[:last_name],
+                  :email => params[:email],
+                  :password => params[:password] })
+    session[:current_user] = params[:first_name]
+    redirect '/'
+  end
+
+  get '/members' do
+    @users = User.all
+    erb :members
   end
 
   get '/dogs' do
