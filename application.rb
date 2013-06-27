@@ -14,7 +14,7 @@ end
 class CatsAndDogs < Sinatra::Base
 
   configure do
-    use(Rack::Session::Cookie, 
+    use(Rack::Session::Cookie,
       :key => 'rack.session',
       :path => '/',
       :expire_after => 2592000, # In seconds
@@ -29,11 +29,17 @@ class CatsAndDogs < Sinatra::Base
         photo.images.standard_resolution.url
       end
     end
+
+    def signed_in?
+      @user != nil
+    end
+
   end
+
 
   before do
     @user = session[:current_user]
-  end  
+  end
 
   get '/' do
     erb :home
@@ -48,7 +54,7 @@ class CatsAndDogs < Sinatra::Base
                   :last_name => params[:last_name],
                   :email => params[:email],
                   :password => params[:password] })
-    session[:current_user] = params[:first_name] 
+    session[:current_user] = params[:first_name]
     redirect '/'
   end
 
@@ -56,7 +62,7 @@ class CatsAndDogs < Sinatra::Base
     @users = User.all
     erb :members
   end
-    
+
   get '/dogs' do
     @photos = get_photo('petdogs')
     @title = "Dogs"

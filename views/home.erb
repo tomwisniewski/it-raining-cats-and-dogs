@@ -30,3 +30,7 @@
 	  	</div>   
 	  	<a href="/signup">Don't have a login? Click here to sign up.</a> 
 		</form>
+
+<% if signed_in? %>
+  <%= erb :home_page_search %>
+<% end %>
