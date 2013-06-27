@@ -3,7 +3,9 @@
   <div class='drop'></div>
 </div>
 
-<ul id="scroller">
+<%= @title %>
+
+<ul id="scroller">	
   <% @photos.each do |url| %>
      <li><a href="<%= url %>" target="_blank"><img src="<%= url %>" /></a></li>
   <% end %>

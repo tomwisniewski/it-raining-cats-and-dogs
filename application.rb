@@ -44,11 +44,13 @@ class CatsAndDogs < Sinatra::Base
 
   get '/dogs' do
     @photos = get_photo('petdogs')
+    @title = "Dogs"
     erb :display
   end
 
   get '/cats' do
     @photos = get_photo('petcats')
+    @title = "Cats"
     erb :display
   end
 
