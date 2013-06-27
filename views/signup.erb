@@ -1,0 +1,28 @@
+<div class="error_messages">
+  <span class="first_name_error error">Please enter your first name</br></span>
+  <span class="last_name_error error">Please enter your first name</br></span>
+  <span class="email_error error">Please enter a valid email</br></span>
+  <span class="email_error error">Your password must be a minimum of six character long</br></span>
+</div>
+
+<form class="signup_form" action="/signup" method="POST">
+  <div>
+    <label class="fixed_width" for="first_name">First Name</label>
+    <input type="text" name="first_name" id="first_name" />
+  </div> 
+  <div> 
+    <label class="fixed_width" for="last_name">Last Name</label>  
+    <input type="text" name="last_name" id="last_name" />
+  </div> 
+  <div>  
+    <label class="fixed_width" for="email">Email</label>  
+    <input type="text" name="email" id="email" />
+  </div> 
+  <div>  
+    <label class="fixed_width" for="password">Password</label>  
+    <input type="password" name="password" id="password" />
+  </div> 
+  <div class="submit">  
+    <input class="submit_button" type="submit" value="Sign Up" />
+  </div>  
+</form>   

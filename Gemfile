@@ -3,7 +3,7 @@ source 'http://rubygems.org/'
 gem 'sinatra'
 gem 'instagram'
 gem 'mongo'
-gem "mongoid"
+gem 'mongoid'
 
 group :development do
   gem 'shotgun'

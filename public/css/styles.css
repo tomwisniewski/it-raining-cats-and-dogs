@@ -7,15 +7,16 @@ body {
 .wrapper {
   width: 800px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .weather {
   padding-top: 50px;
+  text-align: center;
 }
 
 h1 {
   font-size: xx-large;
+  text-align: center;
 }
  
 button {
@@ -35,7 +36,7 @@ img {
   height: 350px;
 }
 
-.drop{
+.drop {
   position: absolute;
   left: 0px;
   top: 10px-1px;
@@ -45,4 +46,29 @@ img {
   border-radius: 0px 5px 5px 5px;
   transform: rotate(45deg);
   z-index: 10000000;
+}
+
+label.fixed_width {
+  display: block;
+  width: 190px;
+  float: left;
+}
+
+.submit {
+  margin-left: 140px;
+}
+
+.error {
+  color: red;
+}
+
+.first_name_error,
+.last_name_error,
+.email_error, 
+.password_error {
+  display: none;
+}
+
+form {
+  padding-left: 200px;
 }
