@@ -2,8 +2,7 @@ require 'sinatra/base'
 require 'instagram'
 require 'mongoid'
 require 'weather-api'
-
-require 'rest_client'
+require 'pony'
 
 require_relative './lib/users'
 
@@ -18,9 +17,19 @@ end
 
 class CatsAndDogs < Sinatra::Base
 
+  Pony.options = {
+    :via => :smtp,
+    :via_options => {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'heroku.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  }
 
-API_KEY = ENV['MAILGUN_API_KEY']
-API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/mailgun.net"
 
   configure do
     use(Rack::Session::Cookie,
@@ -65,15 +74,7 @@ API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/mailgun.net"
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
 
-
-
-
-RestClient.post API_URL+"/messages",
-    :from => "ev@example.com",
-    :to => params[:email],
-    :subject => "This is subject",
-    :text => "Text body",
-    :html => "<b>HTML</b> version of the body!"
+    Pony.mail(:to => params[:email], :subject => 'hi', :body => 'Hello there.')
 
     redirect '/'
   end

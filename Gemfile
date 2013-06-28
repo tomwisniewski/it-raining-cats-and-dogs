@@ -5,7 +5,7 @@ gem 'instagram'
 gem 'mongo'
 gem 'mongoid'
 gem 'weather-api'
-gem 'rest-client'
+gem 'pony'
 
 
 
