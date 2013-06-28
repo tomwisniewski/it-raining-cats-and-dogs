@@ -74,9 +74,16 @@ class CatsAndDogs < Sinatra::Base
     erb :display
   end
 
-  post '/login' do
-
-  end
+  # post '/login' do
+  #   user = User.where(email: params[:email])
+  #   if user.exists? && user.password == params[:password]
+  #       # session[:current_user] = user.first_name
+  #       redirect '/'
+  #     # end
+  #   else
+  #     redirect '/cats'
+  #   end     
+  # end
 
   post '/logout' do
     session[:current_user]=nil
