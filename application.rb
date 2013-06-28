@@ -74,7 +74,7 @@ class CatsAndDogs < Sinatra::Base
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
 
-  Pony.mail(:to => params[:email], :from => 'info@itsrainingcatsanddogs.com', :subject => 'hi', :body => 'Hello there this is Tom, founder of cats and dogs.')
+  Pony.mail(:to => params[:email], :from => 'info@itsrainingcatsanddogs.com', :subject => 'hi', :body => 'Hello there this is itsrainingcatsanddogs.com, thanks for helping us.')
 
     redirect '/'
   end
