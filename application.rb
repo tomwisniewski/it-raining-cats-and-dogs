@@ -65,7 +65,7 @@ class CatsAndDogs < Sinatra::Base
 
   RestClient.post API_URL+"/messages",
       :from => "info@itsrainingcatsanddogs.mailgun.org",
-      :to => params[:email],
+      :to => "params[:email]",
       :subject => "This is subject",
       :text => "Text body",
       :html => "<b>HTML</b> version of the body!"
@@ -96,7 +96,7 @@ class CatsAndDogs < Sinatra::Base
         redirect '/'
     else
       erb :login
-    end     
+    end
   end
 
   post '/logout' do
