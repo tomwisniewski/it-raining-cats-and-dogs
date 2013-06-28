@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'instagram'
 require 'mongoid'
 require 'weather-api'
+require 'pony'
+
 require_relative './lib/users'
 
 Mongoid.load!("./mongoid.yml")
@@ -11,7 +13,23 @@ Instagram.configure do |config|
   # config.client_secret = ENV['INSTAGRAM_SECRET']
 end
 
+
+
 class CatsAndDogs < Sinatra::Base
+
+  Pony.options = {
+    :via => :smtp,
+    :via_options => {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'heroku.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  }
+
 
   configure do
     use(Rack::Session::Cookie,
@@ -23,6 +41,7 @@ class CatsAndDogs < Sinatra::Base
 
   helpers do
     ENV["MONGO_ENV"] = "development"
+
     def get_photo(tag)
       photos = Instagram.tag_recent_media(tag)
       photos.map do |photo|
@@ -54,6 +73,9 @@ class CatsAndDogs < Sinatra::Base
                   :email => params[:email],
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
+
+    Pony.mail(:to => params[:email], :subject => 'hi', :body => 'Hello there.')
+
     redirect '/'
   end
 
@@ -81,7 +103,7 @@ class CatsAndDogs < Sinatra::Base
         redirect '/'
     else
       erb :login
-    end     
+    end
   end
 
   post '/logout' do
