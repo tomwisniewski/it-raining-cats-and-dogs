@@ -15,11 +15,15 @@
 	</form>
 </div>
 
-<div class="slide"><a href="#" class="pull-me">Login</a></div>
+<% unless signed_in? %>
+  <div class="slide"><a href="#" class="pull-me">Login</a></div>
+<% end %>
 
 <form class="login_form" action="/logout" method="POST">
   <div class="submit">
-  	<input class='logout_button' type="submit" value="Logout" />
+    <% if signed_in? %>
+  	   <input class='logout_button' type="submit" value="Logout" />
+    <% end %> 
 	</div>
 </form>
 
