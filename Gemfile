@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'instagram'
 gem 'mongo'
 gem 'mongoid'
+gem 'weather-api'
 
 group :development do
   gem 'capybara'

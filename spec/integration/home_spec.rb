@@ -16,7 +16,7 @@ describe 'home page', :type => :feature do
 
   it "should not show the search_form if user isn't registered " do
     visit "/"
-    page.should have_no_selector("form")
+    page.should have_no_css('.search_form')
   end
 
   it "should show the search_form if user is logged in" do
@@ -31,8 +31,8 @@ describe 'home page', :type => :feature do
     fill_in "email", :with => user.email
     fill_in "password", :with => user.password
     click_button "Sign Up"
-    visit '/'
-    page.should have_selector("form")
+    # visit '/'
+    page.should have_css('.search_form')
   end
 
    it "should show the first_name if user is logged in" do
@@ -47,11 +47,26 @@ describe 'home page', :type => :feature do
     fill_in "email", :with => user.email
     fill_in "password", :with => user.password
     click_button "Sign Up"
-    visit '/'
+    # visit '/'
     page.should have_content("Dario")
   end
 
 end
+
+describe 'signup', :type => :feature, :js => true do
+
+  it "should not submit if email is not in valid format" do
+    user = User.new
+    user.email = "tomtomtom"
+    visit '/signup'
+    fill_in "email", :with => user.email
+    click_button "Sign Up"
+
+    page.should have_content("Please enter a valid email")
+  end
+
+end
+
 
 # describe 'User' do
 

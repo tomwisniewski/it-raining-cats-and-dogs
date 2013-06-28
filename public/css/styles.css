@@ -9,6 +9,12 @@ body {
   margin: 0 auto;
 }
 
+.weather_icon {
+  padding-top: 10px;
+  text-align: center;
+  font-size: medium;
+}
+
 .weather {
   padding-top: 50px;
   text-align: center;
@@ -18,7 +24,7 @@ h1 {
   font-size: xx-large;
   text-align: center;
 }
- 
+
 button {
   padding: 10px;
   border: none;
@@ -64,7 +70,7 @@ img {
 
 .first_name_error,
 .last_name_error,
-.email_error, 
+.email_error,
 .password_error {
   display: none;
 }

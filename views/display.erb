@@ -1,13 +1,12 @@
-
 <div class='container'>
   <div class='drop'></div>
 </div>
 
 <%= @title %>
 
-<ul id="scroller">	
+<ul id="scroller">
   <% @photos.each do |url| %>
      <li><a href="<%= url %>" target="_blank"><img src="<%= url %>" /></a></li>
   <% end %>
-</ul>  
+</ul>
 

@@ -23,13 +23,34 @@
 	</div>
 </form>
 
-<div class='weather'>
-  <image src='image/rain.svg'>
+
+<div class='weather_icon'>
+  <% if @weather.condition.text.include?("Storm") %>
+    <image src='image/storm.svg'>
+    <h1> It's worse then when it'sraining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+  <% elsif @weather.condition.text.include?("Snow") %>
+    <image src='image/snow.svg'>
+    <h1> It's worse then when it'sraining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+  <% elsif @weather.condition.text.include?("Sunny") %>
+    <image src='image/sun.svg'>
+    <h1> Enjoy it's not raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+  <% elsif @weather.condition.text.include?("Clear") %>
+    <image src='image/moon.svg'>
+    <h1> Enjoy it's not raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+  <% elsif @weather.condition.text.include?("Cloudy") %>
+    <image src='image/cloud.svg'>
+    <h1> Soon it will rain <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+  <% else %>
+    <image src='image/rain.svg'>
+    <h1> It's raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+  <%end%>
 </div>
 
-<h1> It's raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
-
-
+<div class = 'weather'>
+  <%= @weather.title %>
+  <br>
+  <%= @weather.condition.text %>
+</div>
 
 <% if signed_in? %>
   <%= erb :home_page_search %>
