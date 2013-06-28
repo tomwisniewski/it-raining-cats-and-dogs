@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'instagram'
 require 'mongoid'
 require 'weather-api'
+require 'rest-client'
 require_relative './lib/users'
 
 Mongoid.load!("./mongoid.yml")
@@ -10,6 +11,11 @@ Instagram.configure do |config|
   config.client_id = ENV['INSTAGRAM_ID']
   # config.client_secret = ENV['INSTAGRAM_SECRET']
 end
+
+
+API_KEY = ENV['MAILGUN_API_KEY']
+API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/mailgun.net"
+
 
 class CatsAndDogs < Sinatra::Base
 
@@ -23,6 +29,7 @@ class CatsAndDogs < Sinatra::Base
 
   helpers do
     ENV["MONGO_ENV"] = "development"
+
     def get_photo(tag)
       photos = Instagram.tag_recent_media(tag)
       photos.map do |photo|
@@ -54,6 +61,14 @@ class CatsAndDogs < Sinatra::Base
                   :email => params[:email],
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
+
+
+  RestClient.post API_URL+"/messages",
+      :from => "info@itsrainingcatsanddogs.mailgun.org",
+      :to => params[:email],
+      :subject => "This is subject",
+      :text => "Text body",
+      :html => "<b>HTML</b> version of the body!"
     redirect '/'
   end
 
