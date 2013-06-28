@@ -6,20 +6,24 @@
 	  </div>
 	  <div>
 	    <label class="loginform" for="password">Password</label>
-	    <input type="text" name="password" id="password" />
+	    <input type="password" name="password" id="password" />
 	  </div>
 	  <div class="submit">
-    	<input class="submit_button" type="submit" value="Login" />
+    	<input type="submit" value="Login" />
   	</div>
-  	<a href="/signup">Don't have a login? Click here to sign up.</a>
+  	<a class="signuplink" href="/signup">Don't have a login? Click here to sign up.</a>
 	</form>
 </div>
 
-<div class="slide"><a href="#" class="pull-me">Login</a></div>
+<% unless signed_in? %>
+  <div class="slide"><a href="#" class="pull-me">Login</a></div>
+<% end %>
 
 <form class="login_form" action="/logout" method="POST">
   <div class="submit">
-  	<input class='logout_button' type="submit" value="Logout" />
+    <% if signed_in? %>
+  	   <input class='logout_button' type="submit" value="Logout" />
+    <% end %> 
 	</div>
 </form>
 

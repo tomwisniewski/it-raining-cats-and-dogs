@@ -61,7 +61,7 @@ img {
 }
 
 .submit {
-  margin-left: 140px;
+  margin-left: 105px;
 }
 
 .error {
@@ -87,4 +87,16 @@ form {
 
 p {
   margin-right:80px;
+}
+
+.login_form {
+  position:relative;
+  top:60px;
+  right:-75px;
+}
+
+.signuplink {
+  position:relative;
+  right:80px;
+  top: 15px;
 }
