@@ -10,10 +10,9 @@ development:
       hosts:
         - localhost:27017
 
-
 test:
   sessions:
-    # default:
+    default:
       hosts:
         - localhost:27017
       database: catsanddogs_test
