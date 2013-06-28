@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'instagram'
 require 'mongoid'
 require 'weather-api'
+require 'rest_client'
+
 require_relative './lib/users'
 
 Mongoid.load!("./mongoid.yml")
@@ -12,6 +14,10 @@ Instagram.configure do |config|
 end
 
 class CatsAndDogs < Sinatra::Base
+
+
+API_KEY = ENV['MAILGUN_API_KEY']
+API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/mailgun.net"
 
   configure do
     use(Rack::Session::Cookie,
@@ -54,6 +60,15 @@ class CatsAndDogs < Sinatra::Base
                   :email => params[:email],
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
+
+
+
+RestClient.post API_URL+"/messages",
+    :from => "ev@example.com",
+    :to => params[:email],
+    :subject => "This is subject",
+    :text => "Text body",
+    :html => "<b>HTML</b> version of the body!"
     redirect '/'
   end
 
@@ -81,7 +96,7 @@ class CatsAndDogs < Sinatra::Base
         redirect '/'
     else
       erb :login
-    end     
+    end
   end
 
   post '/logout' do

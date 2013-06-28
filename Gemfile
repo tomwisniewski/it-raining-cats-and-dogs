@@ -5,6 +5,7 @@ gem 'instagram'
 gem 'mongo'
 gem 'mongoid'
 gem 'weather-api'
+gem 'rest-client'
 
 group :development do
   gem 'capybara'
