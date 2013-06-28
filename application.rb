@@ -72,7 +72,7 @@ class CatsAndDogs < Sinatra::Base
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
 
-    Pony.mail(:to => params[:email], :from => 'info@itsrainingcatsanddogs.com', :subject => 'hi', :body => 'Hello there this is itsrainingcatsanddogs.com, thanks for helping us.')
+    Pony.mail(:to => params[:email], :from => 'info@itsraining.com', :subject => 'Welcome to itsrainingcatsanddogs.herokuapp.com', :body => "Hello #{params[:first_name]}\n\nThank-you for registering at itsrainingcatsanddogs.herokuapp.com.\n\nYour premium features include:\n-custom Instagram search\n-regular email updates with cats and dogs when it's raining\n\nWe hope you enjoy your time with us\n\nMuch love,\nitsrainingcatsanddogs team x")
 
     redirect '/'
   end
@@ -110,8 +110,9 @@ class CatsAndDogs < Sinatra::Base
   end
 
   post '/search' do
-    @photos = get_photo('#{search}')
-    @title = "#{search}"
+    hashtag = params['hashtag']
+    @photos = get_photo(hashtag)
+    @title = "##{hashtag}"
     erb :display
   end
 
