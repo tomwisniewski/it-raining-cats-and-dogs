@@ -14,15 +14,15 @@ Instagram.configure do |config|
 end
 
 class CatsAndDogs < Sinatra::Base
-
+  
   Pony.options = {
     :via => :smtp,
     :via_options => {
-      :address => 'smtp.gmail.com',
-      :port => '25',
-      :domain => 'gmail.com',
-      :user_name => ENV['CATDOGUN'],
-      :password => ENV['CATDOGPW'],
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'heroku.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
       :authentication => :plain,
       :enable_starttls_auto => true
     }
@@ -72,7 +72,7 @@ class CatsAndDogs < Sinatra::Base
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
 
-    Pony.mail(:to => params[:email], :subject => 'hi', :body => 'Hello there.')
+    Pony.mail(:to => params[:email], :from => 'info@itsrainingcatsanddogs.com', :subject => 'hi', :body => 'Hello there this is itsrainingcatsanddogs.com, thanks for helping us.')
 
     redirect '/'
   end
