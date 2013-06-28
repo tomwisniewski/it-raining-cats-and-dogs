@@ -13,8 +13,6 @@ Instagram.configure do |config|
   # config.client_secret = ENV['INSTAGRAM_SECRET']
 end
 
-
-
 class CatsAndDogs < Sinatra::Base
 
   Pony.options = {
@@ -23,9 +21,9 @@ class CatsAndDogs < Sinatra::Base
       :address => 'smtp.gmail.com',
       :port => '25',
       :domain => 'gmail.com',
-      :user_name => 'itsrainingcatsanddogsapp',
-      :password => 'c4tsd0gs',
-      :authentication => z,
+      :user_name => ENV['CATDOGUN'],
+      :password => ENV['CATDOGPW'],
+      :authentication => :plain,
       :enable_starttls_auto => true
     }
   }
