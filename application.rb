@@ -10,7 +10,7 @@ Mongoid.load!("./mongoid.yml")
 
 Instagram.configure do |config|
   config.client_id = ENV['INSTAGRAM_ID']
-  # config.client_secret = ENV['INSTAGRAM_SECRET']
+  config.client_secret = ENV['INSTAGRAM_SECRET']
 end
 
 
@@ -74,7 +74,7 @@ class CatsAndDogs < Sinatra::Base
                   :password => params[:password] })
     session[:current_user] = params[:first_name]
 
-    Pony.mail(:to => params[:email], :subject => 'hi', :body => 'Hello there.')
+  Pony.mail(:to => params[:email], :from => 'info@itsrainingcatsanddogs.com', :subject => 'hi', :body => 'Hello there this is Tom, founder of cats and dogs.')
 
     redirect '/'
   end
@@ -110,5 +110,12 @@ class CatsAndDogs < Sinatra::Base
     session[:current_user]=nil
     redirect to ('/')
   end
+
+  post '/search' do
+    hashtag = params['hashtag']
+    @photos = get_photo(hashtag)
+    erb :display
+  end
+
 
 end
