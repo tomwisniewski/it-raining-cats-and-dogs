@@ -89,4 +89,10 @@ class CatsAndDogs < Sinatra::Base
     redirect to ('/')
   end
 
+  post '/search' do
+    @photos = get_photo('#{search}')
+    @title = "#{search}"
+    erb :display
+  end
+
 end

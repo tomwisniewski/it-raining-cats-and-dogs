@@ -19,7 +19,7 @@
   <div class="slide"><a href="#" class="pull-me">Login</a></div>
 <% end %>
 
-<form class="login_form" action="/logout" method="POST">
+<form class="logout_button" action="/logout" method="POST">
   <div class="submit">
     <% if signed_in? %>
   	   <input class='logout_button' type="submit" value="Logout" />
@@ -31,10 +31,10 @@
 <div class='weather_icon'>
   <% if @weather.condition.text.include?("Storm") %>
     <image src='image/storm.svg'>
-    <h1> It's worse then when it'sraining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+    <h1> It's worse than when it'sraining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
   <% elsif @weather.condition.text.include?("Snow") %>
     <image src='image/snow.svg'>
-    <h1> It's worse then when it'sraining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
+    <h1> It's worse than when it'sraining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
   <% elsif @weather.condition.text.include?("Sunny") %>
     <image src='image/sun.svg'>
     <h1> Enjoy it's not raining <a href="/cats"> cats </a>and <a href="/dogs"> dogs </a> </h1>
@@ -57,5 +57,7 @@
 </div>
 
 <% if signed_in? %>
-  <%= erb :home_page_search %>
+  <div class="search">
+    <%= erb :home_page_search %>
+  </div>
 <% end %>

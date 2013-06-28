@@ -100,3 +100,14 @@ p {
   right:80px;
   top: 15px;
 }
+
+.logout_button {
+  position:relative;
+  bottom:-325px;
+  left:35px;
+}
+
+.search {
+  position:relative;
+  right:-100px;
+}
