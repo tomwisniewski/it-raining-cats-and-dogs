@@ -6,6 +6,7 @@ gem 'mongo'
 gem 'mongoid'
 gem 'weather-api'
 gem 'pony'
+gem 'whenever'
 
 
 
