@@ -30,6 +30,13 @@ class CatsAndDogs < Sinatra::Base
       @user != nil
     end
 
+    def weather_conditions(condition, graphic, heading)
+      if @weather.condition.text.include?(condition)
+        "<image src='image/#{graphic}.svg' />
+         <h1> #{heading} <a href='/cats'> cats </a>and <a href='/dogs'> dogs </a> </h1>"
+      end
+    end  
+
   end
 
   before do

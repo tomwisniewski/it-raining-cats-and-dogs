@@ -45,7 +45,6 @@ describe 'signup', :type => :feature, :js => true do
 
 end
 
-
 # describe 'User' do
 
 #   let(:user) { User.new } # like setup in mini::test
@@ -57,16 +56,3 @@ end
 #   end
 # end
 
-# class UserTest < Minitest::Case
-
-#   def setup
-#     @user = User.new
-#   end
-
-#   def test_should_return_a_full_name
-#     @user.first_name = 'Dario'
-#     @user.last_name = "D'Aprile"
-#     assert_equal "Dario D'Aprile", @user.full_name
-#   end
-
-# end
