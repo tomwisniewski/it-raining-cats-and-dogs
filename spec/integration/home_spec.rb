@@ -20,34 +20,12 @@ describe 'home page', :type => :feature do
   end
 
   it "should show the search_form if user is logged in" do
-    user = User.new
-    user.first_name = "Dario"
-    user.last_name = "D'Aprile"
-    user.email = "dario@gmail.com"
-    user.password = "tomtom"
-    visit "/signup"
-    fill_in "first_name", :with => user.first_name
-    fill_in "last_name", :with => user.last_name
-    fill_in "email", :with => user.email
-    fill_in "password", :with => user.password
-    click_button "Sign Up"
-    # visit '/'
+    signup_user
     page.should have_css('.search_form')
   end
 
    it "should show the first_name if user is logged in" do
-    user = User.new
-    user.first_name = "Dario"
-    user.last_name = "D'Aprile"
-    user.email = "dario@gmail.com"
-    user.password = "tomtom"
-    visit "/signup"
-    fill_in "first_name", :with => user.first_name
-    fill_in "last_name", :with => user.last_name
-    fill_in "email", :with => user.email
-    fill_in "password", :with => user.password
-    click_button "Sign Up"
-    # visit '/'
+    signup_user
     page.should have_content("Dario")
   end
 

@@ -30,11 +30,6 @@ class CatsAndDogs < Sinatra::Base
       @user != nil
     end
 
-    # def send_raining_email
-    #   if @weather.condition.text.include?("Cloudy") || @weather.condition.text.inlude?("Rain")
-    #     User.all.each { |user| Pony.mail(:to => user.email, :from => 'info@itsraining.com', :subject => 'itsrainingcatsanddogs!!!', :body => "It's raining - log in, quick!") }
-    #   end  
-    # end  
   end
 
   before do

@@ -48,6 +48,17 @@ module CatsAndDogsHelpers
               )
   end
 
+
+  def send_raining_email
+    if @weather.condition.text.include?("Storm") || @weather.condition.text.inlude?("Rain")
+      User.all.each { |user| Pony.mail( :to => user.email, 
+                                        :from => 'info@itsraining.com', 
+                                        :subject => 'itsrainingcatsanddogs!!!', 
+                                        :body => "It's raining - log in, quick!"
+                    ) }
+    end  
+  end  
+
   def verify_login(email, password)
     user = User.where(email: email).first
     if user && user.password == password
