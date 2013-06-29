@@ -4,6 +4,7 @@
     height:210px;
 	display:none;
     font-family: 'Lato', serif;
+    border-radius: 0 0 0 30px;
 }
 .panel p{
     display: block;

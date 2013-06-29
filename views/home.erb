@@ -19,14 +19,6 @@
   <div class="slide"><a href="#" class="pull-me">Login</a></div>
 <% end %>
 
-<form class="logout_button" action="/logout" method="POST">
-  <div class="submit">
-    <% if signed_in? %>
-  	   <input class='logout_button' type="submit" value="Logout" />
-    <% end %> 
-	</div>
-</form>
-
 <div class='weather_icon'>
   <%= weather_conditions("Storm", "storm", "It's worse than when it's raining") %>
   <%= weather_conditions("Snow", "snow", "It's worse than when it's raining") %>

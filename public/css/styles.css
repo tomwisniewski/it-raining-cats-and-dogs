@@ -10,13 +10,17 @@ body {
 }
 
 .weather_icon {
-  padding-top: 10px;
+  /*margin-top: -10px; */
   text-align: center;
   font-size: medium;
 }
 
+.weather_icon img {
+  text-align: center;
+}
+
 .weather {
-  padding-top: 50px;
+  padding-top: 40px;
   text-align: center;
 }
 
@@ -68,6 +72,12 @@ img {
   color: red;
 }
 
+.error_messages {
+  margin-bottom: 25px;
+  padding-left: 200px;
+  font-size: 0.8em;
+}
+
 .first_name_error,
 .last_name_error,
 .email_error,
@@ -91,7 +101,7 @@ p {
 
 .login_form {
   position:relative;
-  top:60px;
+  top:35px;
   right:-75px;
 }
 
@@ -102,12 +112,24 @@ p {
 }
 
 .logout_button {
-  position:relative;
-  bottom:-325px;
-  left:35px;
+  float: right;
 }
 
 .search {
   position:relative;
   right:-100px;
+}
+
+.signup_header {
+  border-bottom: 1px solid black;
+  text-align: left;
+}
+
+.hello {
+  font-size: 0.7em;
+}
+
+.hashtag {
+  margin: 20px 0 40px 0;
+  text-align: center;
 }

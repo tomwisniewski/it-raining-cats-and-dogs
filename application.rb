@@ -67,13 +67,13 @@ class CatsAndDogs < Sinatra::Base
 
   get '/dogs' do
     @photos = get_photo('petdogs')
-    @title = "Dogs"
+    @title = "#dogs"
     erb :display
   end
 
   get '/cats' do
     @photos = get_photo('petcats')
-    @title = "Cats"
+    @title = "#cats"
     erb :display
   end
 
@@ -81,7 +81,7 @@ class CatsAndDogs < Sinatra::Base
     verify_login(params[:email], params[:password])
   end
 
-  post '/logout' do
+  get '/logout' do
     session[:current_user] = nil
     redirect to ('/')
   end
