@@ -3,32 +3,17 @@ require 'instagram'
 require 'mongoid'
 require 'weather-api'
 require 'pony'
-
-require_relative './lib/users'
+require_relative './lib/user'
+require_relative './lib/cats_and_dogs_helpers'
 
 Mongoid.load!("./mongoid.yml")
 
-Instagram.configure do |config|
-  config.client_id = ENV['INSTAGRAM_ID']
-  # config.client_secret = ENV['INSTAGRAM_SECRET']
-end
-
 class CatsAndDogs < Sinatra::Base
+
+  Instagram.configure do |config|
+    config.client_id = ENV['INSTAGRAM_ID']
+  end
   
-  Pony.options = {
-    :via => :smtp,
-    :via_options => {
-      :address => 'smtp.sendgrid.net',
-      :port => '587',
-      :domain => 'heroku.com',
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
-  }
-
-
   configure do
     use(Rack::Session::Cookie,
       :key => 'rack.session',
@@ -37,25 +22,19 @@ class CatsAndDogs < Sinatra::Base
       :secret => 'I am the secret code to encrypt the cookie')
   end
 
+  helpers CatsAndDogsHelpers
+
   helpers do
-    ENV["MONGO_ENV"] = "development"
-
-    def get_photo(tag)
-      photos = Instagram.tag_recent_media(tag)
-      photos.map do |photo|
-        photo.images.standard_resolution.url
-      end
-    end
-
+   
     def signed_in?
       @user != nil
     end
 
-    def send_raining_email
-      if @weather.condition.text.include?("Cloudy") || @weather.condition.text.inlude?("Rain")
-        User.all.each { |user| Pony.mail(:to => user.email, :from => 'info@itsraining.com', :subject => 'itsrainingcatsanddogs!!!', :body => "It's raining - log in, quick!") }
-      end  
-    end  
+    # def send_raining_email
+    #   if @weather.condition.text.include?("Cloudy") || @weather.condition.text.inlude?("Rain")
+    #     User.all.each { |user| Pony.mail(:to => user.email, :from => 'info@itsraining.com', :subject => 'itsrainingcatsanddogs!!!', :body => "It's raining - log in, quick!") }
+    #   end  
+    # end  
   end
 
   before do
@@ -64,7 +43,6 @@ class CatsAndDogs < Sinatra::Base
 
   get '/' do
     @weather = Weather.lookup(44418)
-    # send_raining_email
     erb :home
   end
 
@@ -73,14 +51,10 @@ class CatsAndDogs < Sinatra::Base
   end
 
   post '/signup' do
-    User.create({ :first_name => params[:first_name],
-                  :last_name => params[:last_name],
-                  :email => params[:email],
-                  :password => params[:password] })
+    create_user(params[:first_name], params[:last_name], params[:email], params[:password])
     session[:current_user] = params[:first_name]
-
-    Pony.mail(:to => params[:email], :from => 'info@itsraining.com', :subject => 'Welcome to itsrainingcatsanddogs.herokuapp.com', :body => "Hello #{params[:first_name]}\n\nThank-you for registering at itsrainingcatsanddogs.herokuapp.com.\n\nYour premium features include:\n-custom Instagram search\n-regular email updates with cats and dogs when it's raining\n\nWe hope you enjoy your time with us\n\nMuch love,\nitsrainingcatsanddogs team x")
-
+    pony_options
+    send_welcome_email(params[:email])
     redirect '/'
   end
 
@@ -102,17 +76,11 @@ class CatsAndDogs < Sinatra::Base
   end
 
   post '/login' do
-    user = User.where(email: params[:email]).first
-    if user && user.password == params[:password]
-        session[:current_user] = user.first_name
-        redirect '/'
-    else
-      erb :login
-    end
+    verify_login(params[:email], params[:password])
   end
 
   post '/logout' do
-    session[:current_user]=nil
+    session[:current_user] = nil
     redirect to ('/')
   end
 
