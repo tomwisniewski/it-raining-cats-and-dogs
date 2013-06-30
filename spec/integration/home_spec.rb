@@ -5,13 +5,13 @@ describe 'home page', :type => :feature do
   it 'should show images of cats if clicked on the link "Cats"' do
     visit "/"
     click_link 'cats'
-    page.should have_content("Cats")
+    page.should have_content("cats")
   end
 
   it 'should show images of dogs if clicked on the link "Dogs" ' do
     visit "/"
     click_link 'dogs'
-    page.should have_content("Dogs")
+    page.should have_content("dogs")
   end
 
   it "should not show the search_form if user isn't registered " do
@@ -31,7 +31,7 @@ describe 'home page', :type => :feature do
 
   it "should log the user in if they provide correct details" do
     signup_user
-    click_button "Logout"
+    click_link "Log Out"
     click_link 'Login'
     fill_in "email", :with => "dario@gmail.com"
     fill_in "password", :with => "tomtom"
@@ -41,7 +41,7 @@ describe 'home page', :type => :feature do
 
   it "should not log the user in if they provide incorrect details" do
     signup_user
-    click_button "Logout"
+    click_link "Log Out"
     click_link 'Login'
     fill_in "email", :with => "dario@gmail.com"
     fill_in "password", :with => "omtom"
@@ -51,7 +51,7 @@ describe 'home page', :type => :feature do
 
   it "should log out the user" do
     signup_user
-    click_button "Logout"
+    click_link "Log Out"
     page.should have_no_content("Dario")
   end
 

@@ -30,6 +30,18 @@ class CatsAndDogs < Sinatra::Base
       @user != nil
     end
 
+    def weather_conditions_array
+      [ ["Storm", "storm", "It's worse than when it's raining"],
+        ["Snow", "snow", "It's worse than when it's raining"],
+        ["Sunny", "sun", "Enjoy - it's not raining"],
+        ["Clear", "moon", "Enjoy - it's not raining"],
+        ["Cloudy", "cloud", "Soon it will rain"],
+        ["Fair", "cloud", "Enjoy - it's not raining"],
+        ["Rain", "rain", "It's raining"],
+        ["Hazy", "cloud", "Enjoy - it's not raining"]
+      ] 
+    end  
+
     def weather_conditions(condition, graphic, heading)
       if @weather.condition.text.include?(condition)
         "<image src='image/#{graphic}.svg' />
